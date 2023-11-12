@@ -55,9 +55,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  double red = 0.0;
-  double green = 0.0;
-  double blue = 0.0;
+  double red_1 = 0.0;
+  double green_1 = 0.0;
+  double blue_1 = 0.0;
+  double red_2 = 0.0;
+  double green_2 = 0.0;
+  double blue_2 = 0.0;
 
   @override
   Widget build(BuildContext context) {
@@ -68,31 +71,54 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, red.round(), green.round(), blue.round()),
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title)
       ),
       body: Center(
-        child: Column(
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                colors: [
+                  Color.fromARGB(255, red_1.round(), green_1.round(), blue_1.round()),
+                  Color.fromARGB(255, red_2.round(), green_2.round(), blue_2.round())
+                ])
+          ),
+          child: Column(
           children: [
-            Text("Red"),
-            Slider(value: red, max: 255.0, divisions: 100, label: red.round().toString(),
-            onChanged: (double value) {setState(() {
-              red = value;
-            });},),
-            Text("Green"),
-            Slider(value: green, max: 255.0, divisions: 100, label: green.round().toString(),
+          Text("Red_first"),
+            Slider(value: red_1, max: 255.0, divisions: 100, label: red_1.round().toString(),
               onChanged: (double value) {setState(() {
-                green = value;
+                red_1 = value;
               });},),
-            Text("Blue"),
-            Slider(value: blue, max: 255.0, divisions: 100, label: blue.round().toString(),
+            Text("Green_first"),
+            Slider(value: green_1, max: 255.0, divisions: 100, label: green_1.round().toString(),
               onChanged: (double value) {setState(() {
-                blue = value;
+                green_1 = value;
+              });},),
+            Text("Blue_first"),
+            Slider(value: blue_1, max: 255.0, divisions: 100, label: blue_1.round().toString(),
+              onChanged: (double value) {setState(() {
+                blue_1 = value;
+              });},),
+            Text("Red_second"),
+            Slider(value: red_2, max: 255.0, divisions: 100, label: red_2.round().toString(),
+              onChanged: (double value) {setState(() {
+                red_2 = value;
+              });},),
+            Text("Green_second"),
+            Slider(value: green_2, max: 255.0, divisions: 100, label: green_2.round().toString(),
+              onChanged: (double value) {setState(() {
+                green_2 = value;
+              });},),
+            Text("Blue_second"),
+            Slider(value: blue_2, max: 255.0, divisions: 100, label: blue_2.round().toString(),
+              onChanged: (double value) {setState(() {
+                blue_2 = value;
               });},),
           ],
-        ),
+          ),
+        )
       )
     );
   }
